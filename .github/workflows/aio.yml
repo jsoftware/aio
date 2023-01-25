@@ -1,0 +1,43 @@
+name: AIO
+
+on:
+ - push
+
+jobs:
+
+# windows --------------------------------------------------------------
+ winaio:
+  name: WinAIO
+  runs-on: windows-latest
+  steps:
+   - name: Checkout Git repository
+     uses: actions/checkout@v2
+
+   - name: Get files
+     shell: pwsh
+     run: |
+      script\getfiles.cmd
+
+   - name: Build AIO
+     uses: joncloud/makensis-action@v4
+
+   - name: Release WinAIO
+     uses: ncipollo/release-action@v1
+     with:
+      tag: build
+      artifacts: "j904_win64.zip"
+      token: ${{ secrets.GITHUB_TOKEN }}
+      allowUpdates: true
+      replacesArtifacts: true
+
+ webhook:
+  name: Run Webhook
+  runs-on: windows-latest
+  needs: winaio
+  steps:
+   - name: update server
+     uses: distributhor/workflow-webhook@v2
+     env:
+      webhook_url: ${{ secrets.WEBHOOK_URL }}
+      webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
+      data: '{ "id": "winaio" }'
