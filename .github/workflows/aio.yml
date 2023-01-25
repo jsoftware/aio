@@ -22,7 +22,7 @@ jobs:
    - name: Get files
      shell: pwsh
      run: |
-      script\getfiles.ps1 ${{ env.target }}
+      .\getfiles.ps1 ${{ env.target }}
 
    - name: Build AIO
      uses: joncloud/makensis-action@v4
