@@ -3,6 +3,9 @@ name: AIO
 on:
  - push
 
+env:
+  target: j904_win64.exe
+
 jobs:
 
 # windows --------------------------------------------------------------
@@ -12,11 +15,14 @@ jobs:
   steps:
    - name: Checkout Git repository
      uses: actions/checkout@v2
+     env:
+        password: ${{ secrets.PASSWORD }}
+        url: https://github.com/${{github.repository}}
 
    - name: Get files
      shell: pwsh
      run: |
-      script\getfiles.cmd
+      script\getfiles.ps1 ${{ env.target }}
 
    - name: Build AIO
      uses: joncloud/makensis-action@v4
@@ -25,7 +31,7 @@ jobs:
      uses: ncipollo/release-action@v1
      with:
       tag: build
-      artifacts: "j904_win64.zip"
+      artifacts: ${{ env.target }}
       token: ${{ secrets.GITHUB_TOKEN }}
       allowUpdates: true
       replacesArtifacts: true
