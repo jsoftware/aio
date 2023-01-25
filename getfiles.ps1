@@ -38,6 +38,7 @@ cd ..\..
 
 dir resources
 dir resources\x64
+dir resources\x64\bin
 dir resources\je
 
 # nsis should build this file
