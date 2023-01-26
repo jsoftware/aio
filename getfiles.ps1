@@ -6,9 +6,16 @@ $rel = $exe.Substring(0,4)
 $bin = "resources\x64\bin"
 $obin = ("-o" + $bin)
 
+$pfn = "c:\program files (x86)\nsis\"
+cp CPUFeatures.dll ($pfn + "plugins\x86-unicode")
+cp CPUFeatures.nsh ($pfn + "include")
+cp MultiUserX64.nsh ($pfn + "include")
+
+dir ($pfn + "plugins\x86-unicode")
+dir ($pfn + "include")
+
 mkdir temp
 mkdir resources\je
-mkdir resources\x64
 
 cd temp
 
@@ -42,4 +49,4 @@ dir resources\x64\bin
 dir resources\je
 
 # nsis should build this file
-echo "hello" >> $exe
+# echo "hello" >> $exe

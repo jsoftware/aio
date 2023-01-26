@@ -21,10 +21,10 @@ Unicode True
 !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_VALUE "Path"
 
 # MUI Symbol Definitions
-!define MUI_ICON "resources\inst.ico"
-!define MUI_UNICON "resources\uninst.ico"
-!define MUI_HEADERIMAGE_BITMAP "resources\sm.bmp"
-!define MUI_WELCOMEFINISHPAGE_BITMAP "resources\lg.bmp"
+#!define MUI_ICON "resources\inst.ico"
+#!define MUI_UNICON "resources\uninst.ico"
+#!define MUI_HEADERIMAGE_BITMAP "resources\sm.bmp"
+#!define MUI_WELCOMEFINISHPAGE_BITMAP "resources\lg.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT SHCTX
 !define MUI_STARTMENUPAGE_NODISABLE
