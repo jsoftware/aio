@@ -1,4 +1,4 @@
-# 09 Nov 2016 11:22:33
+# 27 Jan 2023 09:24
 
 Name "J904"
 SetCompressor /SOLID lzma
@@ -19,12 +19,13 @@ Unicode True
 !define MULTIUSER_INSTALLMODE_INSTDIR "$(^Name)"
 !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_KEY "${REGKEY}"
 !define MULTIUSER_INSTALLMODE_INSTDIR_REGISTRY_VALUE "Path"
+!define MULTIUSER_USE_PROGRAMFILES64
 
 # MUI Symbol Definitions
-#!define MUI_ICON "resources\inst.ico"
-#!define MUI_UNICON "resources\uninst.ico"
-#!define MUI_HEADERIMAGE_BITMAP "resources\sm.bmp"
-#!define MUI_WELCOMEFINISHPAGE_BITMAP "resources\lg.bmp"
+!define MUI_ICON "resources\inst.ico"
+!define MUI_UNICON "resources\uninst.ico"
+!define MUI_HEADERIMAGE_BITMAP "resources\sm.bmp"
+!define MUI_WELCOMEFINISHPAGE_BITMAP "resources\lg.bmp"
 !define MUI_FINISHPAGE_NOAUTOCLOSE
 !define MUI_STARTMENUPAGE_REGISTRY_ROOT SHCTX
 !define MUI_STARTMENUPAGE_NODISABLE
@@ -37,7 +38,7 @@ Unicode True
 !define MUI_UNFINISHPAGE_NOAUTOCLOSE
 
 # Included files
-!include MultiUserX64.nsh
+!include MultiUser.nsh
 !include Sections.nsh
 !include MUI2.nsh
 !include x64.nsh
