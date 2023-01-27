@@ -28,7 +28,7 @@ cd temp
 
 $url = "www.jsoftware.com/download/"
 
-c:\msys64\usr\bin\wget ($url + $rel + "/install/" + $zip)
+c:\msys64\usr\bin\wget ($url + $rel + "/installdev/" + $zip)
 c:\msys64\usr\bin\wget ($url + $rel + "/qtide/jqt-win-x64.zip")
 c:\msys64\usr\bin\wget ($url + $rel + "/qtlib/qt62-win-x64.zip")
 c:\msys64\usr\bin\wget ($url + $rel + "/qtlib/opengl-win-x64.zip")
