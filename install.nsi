@@ -1,12 +1,12 @@
 # 27 Jan 2023 09:24
 
-Name "J904"
+Name "JXXX"
 SetCompressor /SOLID lzma
 Unicode True
 
 # General Symbol Definitions
 !define REGKEY "SOFTWARE\$(^Name)"
-!define VERSION 9.0.4
+!define VERSION YYY
 !define COMPANY Jsoftware
 !define URL http://www.jsoftware.com
 
@@ -63,7 +63,7 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-Outfile j904_win64.exe
+Outfile jXXX_win64.exe
 InstallDir "$(^Name)"
 CRCCheck on
 XPStyle on
@@ -94,8 +94,8 @@ Section -Main SEC0000
     ${EndIf}
     CreateDirectory "$SMPROGRAMS\$StartMenuGroup"
     SetOutPath $PROFILE
-    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\J904.lnk" "$INSTDIR\bin\jqt.exe"
-    CreateShortcut "$DESKTOP\J904.lnk" "$INSTDIR\bin\jqt.exe"
+    CreateShortcut "$SMPROGRAMS\$StartMenuGroup\JXXX.lnk" "$INSTDIR\bin\jqt.exe"
+    CreateShortcut "$DESKTOP\JXXX.lnk" "$INSTDIR\bin\jqt.exe"
     WriteRegStr SHCTX "${REGKEY}\Components" Main 1
 SectionEnd
 
@@ -131,8 +131,8 @@ Section un.Main UNSEC0000
     RmDir /R /REBOOTOK $INSTDIR\bin
     RmDir /R /REBOOTOK $INSTDIR\system
     RmDir /R /REBOOTOK $INSTDIR\tools
-    Delete /REBOOTOK "$DESKTOP\J904.lnk"
-    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\J904.lnk"
+    Delete /REBOOTOK "$DESKTOP\JXXX.lnk"
+    Delete /REBOOTOK "$SMPROGRAMS\$StartMenuGroup\JXXX.lnk"
     DeleteRegValue SHCTX "${REGKEY}\Components" Main
     DeleteRegKey SHCTX "SOFTWARE\Microsoft\Windows\CurrentVersion\Uninstall\$(^Name)"
     Delete /REBOOTOK $INSTDIR\uninstall.exe
@@ -149,7 +149,7 @@ Function .onInit
     InitPluginsDir
     !insertmacro MULTIUSER_INIT
     ${IfNot} ${Runningx64}
-      MessageBox MB_OK "J904 must be installed on 64-bit Windows. Will abort."
+      MessageBox MB_OK "JXXX must be installed on 64-bit Windows. Will abort."
       Abort ; causes installer to quit.
     ${EndIf}
 FunctionEnd
