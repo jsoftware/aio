@@ -64,7 +64,7 @@ Var StartMenuGroup
 
 # Installer attributes
 Outfile jXXX_win64ZZZ.exe
-InstallDir "$(^Name)"
+!InstallDir "$(^Name)"
 CRCCheck on
 XPStyle on
 ShowInstDetails show

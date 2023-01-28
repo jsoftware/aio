@@ -1,2 +1,6 @@
-// dummy file - make any change before push to rebuild the AIO
+// on any push, the repo builds new AIO installers in the repo releases directory.
+// if this file is also changed, then the new installers are copied to the server install directory.
+// so for experiments with AIO, don't change this file before the commit.
+// when your changes are working, change the file and commit.
+// e.g. just increment the number below. This number is otherwise meaningless.
 1
