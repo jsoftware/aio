@@ -3,8 +3,10 @@ name: AIO
 on:
  - push
 
+# update for current release:
 env:
   target: j904_win64.exe
+  targets: j904_win64_slim.exe
 
 jobs:
 
@@ -36,10 +38,39 @@ jobs:
       allowUpdates: true
       replacesArtifacts: true
 
+# windows slim ---------------------------------------------------------
+ winaios:
+  name: WinAIOslim
+  runs-on: windows-latest
+  steps:
+   - name: Checkout Git repository
+     uses: actions/checkout@v2
+     env:
+        password: ${{ secrets.PASSWORD }}
+        url: https://github.com/${{github.repository}}
+
+   - name: Get files
+     shell: pwsh
+     run: |
+      .\getfiles.ps1 ${{ env.targets }}
+
+   - name: Build AIO
+     uses: joncloud/makensis-action@v4
+
+   - name: Release WinAIO
+     uses: ncipollo/release-action@v1
+     with:
+      tag: build
+      artifacts: ${{ env.targets }}
+      token: ${{ secrets.GITHUB_TOKEN }}
+      allowUpdates: true
+      replacesArtifacts: true
+
+# webhook --------------------------------------------------------------
  webhook:
   name: Run Webhook
   runs-on: ubuntu-latest
-  needs: winaio
+  needs: [winaio, winaios]
   steps:
    - name: update server
      uses: distributhor/workflow-webhook@v2

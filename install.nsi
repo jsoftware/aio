@@ -63,7 +63,7 @@ Var StartMenuGroup
 !insertmacro MUI_LANGUAGE English
 
 # Installer attributes
-Outfile jXXX_win64.exe
+Outfile jXXX_win64ZZZ.exe
 InstallDir "$(^Name)"
 CRCCheck on
 XPStyle on
