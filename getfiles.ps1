@@ -53,7 +53,6 @@ move $rel\* resources\x64
 7z x temp\$jqt $obin
 7z x temp\$qtl $obin
 7z x temp\opengl-win-x64.zip $obin
-7z x temp\ssl-win-x64.zip $obin
 
 $url = ("www.jsoftware.com/download/jengine/" + $rname)
 
