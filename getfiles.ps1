@@ -42,7 +42,6 @@ $url = ("www.jsoftware.com/download/" + $rel)
 c:\msys64\usr\bin\wget ($url + "/installdev/" + $zip)
 c:\msys64\usr\bin\wget ($url + "/qtide/" + $jqt)
 c:\msys64\usr\bin\wget ($url + "/qtlib/" + $qtl)
-c:\msys64\usr\bin\wget ($url + "/qtlib/opengl-win-x64.zip")
 
 cd ..
 
