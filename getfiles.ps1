@@ -6,10 +6,12 @@ $exe = $args[0]
 $zip = $exe.Replace("exe","zip").Replace("_slim","")
 
 # get major, minor, revision numbers:
-$t = $exe.Substring(1).split("._")
+# note - I tried using Split("._-") but this did not work and instead
+# returned the argument, so this splits one delimiter at a time.
+$t = $exe.Substring(1).Split(".")
 $maj = $t[0]
 $min = $t[1]
-$rev = $t[2]
+$rev = $t[2].Split("_")[0].Split("-")[0]
 $rnum = ($maj + "." + $min)
 $rver = ($rnum + "." + $rev)
 
