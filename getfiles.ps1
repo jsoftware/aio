@@ -42,7 +42,7 @@ cd temp
 
 $url = ("www.jsoftware.com/download/j" + $rnum)
 
-c:\msys64\usr\bin\wget ($url + "/installdev/" + $zip)
+c:\msys64\usr\bin\wget ($url + "/install/" + $zip)
 c:\msys64\usr\bin\wget ($url + "/qtide/" + $jqt)
 c:\msys64\usr\bin\wget ($url + "/qtlib/" + $qtl)
 
