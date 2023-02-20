@@ -5,8 +5,9 @@ on:
 
 # update for current release, no need for beta version:
 env:
-  target: j9.4.0_win64.exe
-  targets: j9.4.0_win64_slim.exe
+  target: j9.4_win64.exe
+  targets: j9.4_win64_slim.exe
+  revision: 0
 
 jobs:
 
@@ -24,7 +25,7 @@ jobs:
    - name: Get files
      shell: pwsh
      run: |
-      .\getfiles.ps1 ${{ env.target }}
+      .\getfiles.ps1 ${{ env.target }} ${{ env.revision }}
 
    - name: Build AIO
      uses: joncloud/makensis-action@v4
@@ -52,7 +53,7 @@ jobs:
    - name: Get files
      shell: pwsh
      run: |
-      .\getfiles.ps1 ${{ env.targets }}
+      .\getfiles.ps1 ${{ env.targets }} ${{ env.revision }}
 
    - name: Build AIO
      uses: joncloud/makensis-action@v4

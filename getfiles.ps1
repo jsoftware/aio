@@ -1,19 +1,25 @@
 # get windows AIO files into resources folder
 #
-# argument is set in aio.yml in the form: j9.4.1_win64[_slim].exe
+# argument is set in aio.yml in the form: j9.4_win64[_slim].exe 1
 
 $exe = $args[0]
-$zip = $exe.Replace("exe","zip").Replace("_slim","")
+$rev = $args[1]
 
-# get major, minor, revision numbers:
-# note - I tried using Split("._-") but this did not work and instead
-# returned the argument, so this splits one delimiter at a time.
+# get major, minor numbers:
 $t = $exe.Substring(1).Split(".")
 $maj = $t[0]
-$min = $t[1]
-$rev = $t[2].Split("_")[0].Split("-")[0]
+$min = $t[1].Split("_")[0]
 $rnum = ($maj + "." + $min)
 $rver = ($rnum + "." + $rev)
+$rel = ("j" + $rnum)
+$zip = ($rel + "_win64.zip")
+
+echo $t
+echo $rnum
+echo $rel
+echo $zip
+
+# exit 0
 
 $bin = "resources\x64\bin"
 $obin = ("-o" + $bin)
