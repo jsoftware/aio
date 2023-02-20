@@ -3,10 +3,10 @@ name: AIO
 on:
  - push
 
-# update for current release:
+# update for current release, no need for beta version:
 env:
-  target: j904_win64.exe
-  targets: j904_win64_slim.exe
+  target: j9.4.0_win64.exe
+  targets: j9.4.0_win64_slim.exe
 
 jobs:
 

@@ -1,17 +1,20 @@
 # get windows AIO files into resources folder
 #
-# argument is set in aio.yml in the form: j904_win64[_slim].exe
+# argument is set in aio.yml in the form: j9.4.1_win64[_slim].exe
 
 $exe = $args[0]
 $zip = $exe.Replace("exe","zip").Replace("_slim","")
-$rel = $exe.Substring(0,4)
-$rnum = $rel.Substring(1)
+
+# get major, minor, revision numbers:
+$t = $exe.Substring(1).split("._")
+$maj = $t[0]
+$min = $t[1]
+$rev = $t[2]
+$rnum = ($maj + "." + $min)
+$rver = ($rnum + "." + $rev)
+
 $bin = "resources\x64\bin"
 $obin = ("-o" + $bin)
-if ($rnum -eq "904") { $rname = ($rel + "-beta") }
-else { echo ("not supported: " + $rel); exit }
-
-$rver = ($rnum.Substring(0,1) + "." + $rnum.Substring(1,1) + "." + $rnum.Substring(2,1))
 
 if ($exe -match "slim") {
   $slim = "_slim"
@@ -37,7 +40,7 @@ mkdir resources\je
 
 cd temp
 
-$url = ("www.jsoftware.com/download/" + $rel)
+$url = ("www.jsoftware.com/download/j" + $rnum)
 
 c:\msys64\usr\bin\wget ($url + "/installdev/" + $zip)
 c:\msys64\usr\bin\wget ($url + "/qtide/" + $jqt)
@@ -53,7 +56,7 @@ move $rel\* resources\x64
 7z x temp\$qtl $obin
 7z x temp\opengl-win-x64.zip $obin
 
-$url = ("www.jsoftware.com/download/jengine/" + $rname)
+$url = ("www.jsoftware.com/download/jengine/j" + $rnum)
 
 cd resources\je
 c:\msys64\usr\bin\wget ($url + "/windows/j64/javx.dll")
