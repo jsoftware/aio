@@ -43,7 +43,7 @@ echo $fullver > revision.txt
 $bin = "resources\x64\bin"
 $obin = ("-o" + $bin)
 
-if ($exe -eq "slim") {
+if ($exe -match "slim") {
   $slim = "_slim"
   $jqt = "jqt-winslim-x64.zip"
   $qtl = "qt62-win-slim-x64.zip"
