@@ -3,28 +3,47 @@
 # argument is set in aio.yml in the form: j9.4_win64[_slim].exe 1
 
 $exe = $args[0]
-$rev = $args[1]
+$t = $args[1].ToString().Split(".")
+$rev = $t[0]
+$beta = $t[1]
+
+if (($rev -eq 0) -and ($beta.length -eq 0)) {
+  echo "beta number required for revision 0"
+  exit 0
+}
+
+if (($rev -gt 0) -and ($beta.length -gt 0)) {
+  echo ("beta number should not be given revision " + $rev)
+  exit 0
+}
 
 # get major, minor numbers:
 $t = $exe.Substring(1).Split(".")
 $maj = $t[0]
 $min = $t[1].Split("_")[0]
 $rnum = ($maj + "." + $min)
-$rver = ($rnum + "." + $rev)
 $rel = ("j" + $rnum)
 $zip = ($rel + "_win64.zip")
 
-echo $t
-echo $rnum
-echo $rel
-echo $zip
+$rver = ($rnum + "." + $rev)
+
+if ($rev -gt 0) {  $fullver = $rver }
+else { $fullver = ($rver + "-beta" + $beta) }
+
+echo ("args = " + $args)
+echo ("rnum = " + $rnum)
+echo ("rel = " + $rel)
+echo ("zip = " + $zip)
+echo ("fullver = " + $fullver)
+
+echo $fullver > revision.txt
 
 # exit 0
 
 $bin = "resources\x64\bin"
 $obin = ("-o" + $bin)
 
-if ($exe -match "slim") {
+if ($exe -eq "slim") {
   $slim = "_slim"
   $jqt = "jqt-winslim-x64.zip"
   $qtl = "qt62-win-slim-x64.zip"
