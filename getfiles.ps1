@@ -36,7 +36,7 @@ echo ("rel = " + $rel)
 echo ("zip = " + $zip)
 echo ("fullver = " + $fullver)
 
-echo $fullver > revision.txt
+Set-Content -NoNewline -Path 'revision.txt' -Value $fullver
 
 # exit 0
 
