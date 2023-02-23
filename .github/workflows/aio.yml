@@ -11,7 +11,7 @@ on:
 env:
   target: j9.4_win64.exe
   targets: j9.4_win64_slim.exe
-  revision: 0.12
+  revision: 0.13
 
 jobs:
 
