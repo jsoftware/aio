@@ -1,9 +1,12 @@
 # get info from version.txt for github actions
 
-$dat = Get-Content("version.txt")
+$dat = Get-Content -Path "version.txt"
 $rev =
 
-Foreach ($f in Get-Content("version.txt")) {
+# reference $dat to ensure read
+echo $dat
+
+Foreach ($f in $dat) {
   $f = $f.Trim()
   if ( ($f.length -gt 0) -and ($f.SubString(0,2) -ne "//") ) {
     $rev = $f
@@ -23,6 +26,10 @@ $num = ($maj + "." + $min)
 
 $tgt = ("j" + $num + "_win64.exe")
 $tgts = ("j" + $num + "_win64_slim.exe")
+
+echo ("rev = " + $rev)
+echo ("tgt = " + $tgt)
+echo ("tgts = " + $tgts)
 
 Set-Content -NoNewline -Path 'revision.txt' -Value $rev
 Set-Content -NoNewline -Path 'target.txt' -Value $tgt
