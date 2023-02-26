@@ -1,7 +1,5 @@
-// on any push, the repo builds new AIO installers in the repo releases directory.
-// if this file is also changed, then the new installers are copied to the server install directory.
-// so for experiments with AIO, don't change this file before the commit.
-// when your changes are working, change the file and commit.
-// e.g. just increment the number below. This number is otherwise meaningless.
-// note - the J version is set in .github/workflows/aio.yml
-8
+// set version info for AIO github build, in form:
+// 9.4.0-beta13  (beta)
+// 9.4.1         (release)
+// any change to this file triggers copy AIO build to jsoftware server
+9.4.0-beta13

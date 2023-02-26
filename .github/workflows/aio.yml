@@ -3,16 +3,6 @@ name: AIO
 on:
  - push
 
-# global env -----------------------------------------------------------
-# update for current release
-# revision has form:
-# for beta: 0.N = beta N  (0.0 is first beta, then 0.1 ...)
-# for release: N = 1, 2, 3 ...
-env:
-  target: j9.4_win64.exe
-  targets: j9.4_win64_slim.exe
-  revision: 0.13
-
 jobs:
 
 # windows --------------------------------------------------------------
@@ -26,10 +16,19 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         url: https://github.com/${{github.repository}}
 
+   - name: Get version
+     shell: pwsh
+     run: .\getversion.ps1
+
    - name: Get files
      shell: pwsh
-     run: |
-      .\getfiles.ps1 ${{ env.target }} ${{ env.revision }}
+     run: .\getfiles.ps1 0
+
+   - name: Get target
+     id: read_file
+     uses: andstor/file-reader-action@v1
+     with:
+      path: "target.txt"
 
    - name: Build AIO
      uses: joncloud/makensis-action@v4
@@ -38,7 +37,7 @@ jobs:
      uses: ncipollo/release-action@v1
      with:
       tag: build
-      artifacts: "${{ env.target }},revision.txt,version.txt"
+      artifacts: "${{ steps.read_file.outputs.contents }},revision.txt,version.txt"
       token: ${{ secrets.GITHUB_TOKEN }}
       allowUpdates: true
       replacesArtifacts: true
@@ -54,10 +53,19 @@ jobs:
         password: ${{ secrets.PASSWORD }}
         url: https://github.com/${{github.repository}}
 
+   - name: Get version
+     shell: pwsh
+     run: .\getversion.ps1
+
    - name: Get files
      shell: pwsh
-     run: |
-      .\getfiles.ps1 ${{ env.targets }} ${{ env.revision }}
+     run: .\getfiles.ps1 1
+
+   - name: Get target
+     id: read_file
+     uses: andstor/file-reader-action@v1
+     with:
+      path: "targets.txt"
 
    - name: Build AIO
      uses: joncloud/makensis-action@v4
@@ -66,7 +74,7 @@ jobs:
      uses: ncipollo/release-action@v1
      with:
       tag: build
-      artifacts: ${{ env.targets }}
+      artifacts: "${{ steps.read_file.outputs.contents }}"
       token: ${{ secrets.GITHUB_TOKEN }}
       allowUpdates: true
       replacesArtifacts: true
