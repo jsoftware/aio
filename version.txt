@@ -1,5 +1,5 @@
 // set version info for AIO github build, in form:
 // 9.4.0-beta13  (beta)
 // 9.4.1         (release)
-// any change to this file triggers copy AIO build to jsoftware server
+//  any change to this file triggers copy AIO build to jsoftware server
 9.4.1

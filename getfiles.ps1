@@ -60,7 +60,11 @@ cd ..
 7z x ("temp\" + $zip)
 move $rel\* resources\x64
 
+function ferase ($a) { if (Test-Path "$a") { Remove-Item "$a" } }
+
 7z x temp\$jqt $obin
+ferase $obin\qt.exp
+ferase $obin\qt.lib
 7z x temp\$qtl $obin
 
 cd resources\je
