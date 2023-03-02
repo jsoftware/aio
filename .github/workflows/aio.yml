@@ -37,7 +37,7 @@ jobs:
      uses: ncipollo/release-action@v1
      with:
       tag: build
-      artifacts: "${{ steps.read_file.outputs.contents }},revision.txt,version.txt"
+      artifacts: "${{ steps.read_file.outputs.contents }},build.txt,revision.txt"
       token: ${{ secrets.GITHUB_TOKEN }}
       allowUpdates: true
       replacesArtifacts: true
