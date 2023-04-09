@@ -69,7 +69,6 @@ ferase $obin\qt.lib
 
 cd resources\je
 $url = ("www.jsoftware.com/download/jengine/" + $rel + "/windows/j64/")
-Invoke-WebRequest -UseBasicParsing ($url + "javx.dll") -outfile "javx.dll"
 Invoke-WebRequest -UseBasicParsing ($url + "javx2.dll") -outfile "javx2.dll"
 cd ..\..
 

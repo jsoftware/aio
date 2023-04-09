@@ -91,9 +91,6 @@ Section -Main SEC0000
     SetOverwrite on
     File /r resources\x64\*
     SetOutPath $INSTDIR\bin
-    ${If} ${CPUSupports} "AVX1"
-      File /oname=j.dll resources\je\javx.dll
-    ${EndIf}
     ${If} ${CPUSupports} "AVX2"
       File /oname=j.dll resources\je\javx2.dll
     ${EndIf}
