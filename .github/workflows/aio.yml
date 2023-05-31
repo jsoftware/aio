@@ -90,4 +90,5 @@ jobs:
      env:
       webhook_url: ${{ secrets.WEBHOOK_URL }}
       webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-      data: '{ "id": "${{ env.target }}" }'
+      #data: '{ "id": "${{ env.target }}" }'
+      data: '{ "id": "jaio" }'
