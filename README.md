@@ -1,8 +1,5 @@
-This repo builds the J Windows AIO installers in GitHub Actions.
+This repo has been replaced by jinstall, but is retained for building only the Windows AIOs.
 
 The version is set in version.txt.
 
-Any change to the build.txt file triggers copy AIO build to jsoftware server.
-The number in build.txt is unimportant, e.g. just increment it for a new build.
-
-Other files need not be changed.
+There is no webhook, so get the files from the repo build page.

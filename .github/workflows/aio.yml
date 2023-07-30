@@ -78,17 +78,3 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
       allowUpdates: true
       replacesArtifacts: true
-
-# webhook --------------------------------------------------------------
- webhook:
-  name: Run Webhook
-  runs-on: ubuntu-latest
-  needs: [winaio, winaios]
-  steps:
-   - name: update server
-     uses: distributhor/workflow-webhook@v2
-     env:
-      webhook_url: ${{ secrets.WEBHOOK_URL }}
-      webhook_secret: ${{ secrets.WEBHOOK_SECRET }}
-      #data: '{ "id": "${{ env.target }}" }'
-      data: '{ "id": "jaio" }'

@@ -22,12 +22,12 @@ $obin = ("-o" + $bin)
 if ($args -eq 1) {
   $slim = "_slim"
   $jqt = "jqt-win-slim.zip"
-  $qtl = "qt62-win-slim-x64.zip"
+  $qtl = "qt65-win-slim-x64.zip"
 }
 else {
   $slim = ""
   $jqt = "jqt-win.zip"
-  $qtl = "qt62-win-x64.zip"
+  $qtl = "qt65-win-x64.zip"
 }
 
 echo ("ver = " + $ver)
